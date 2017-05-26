@@ -72,7 +72,7 @@ namespace Server
             Console.WriteLine("Connected");
             bool clientAlive = true;
             Client client_abs = new Client();
-            int toAllMessageNumber = 0;
+            long toAllMessageNumber = 0;
             while(clientAlive)
             {
                 string backMessage;
