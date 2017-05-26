@@ -91,7 +91,8 @@ namespace Server
                     blockModelRead = true;
                     new Thread(() =>
                     {
-                        model.read(models[message.Split(' ')[1]]);
+                        model.read10000 += model_read10000;
+                        model.read(models[message.Split(' ')[1]]);               
                         blockModelRead = false;
                     }).Start();
                     return MessageInterpretations.READ;
@@ -102,6 +103,13 @@ namespace Server
                     return MessageInterpretations.INVALID;
             }
             return MessageInterpretations.INVALID;
+        }
+        static public long messageCount = 0;
+        static public string messageToAll = "";
+        static void model_read10000(int current, int size)
+        {
+            messageCount += 1;
+            messageToAll = "READING " + current.ToString() + " " + size.ToString();
         }
         
     }

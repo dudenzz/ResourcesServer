@@ -72,13 +72,21 @@ namespace Server
             Console.WriteLine("Connected");
             bool clientAlive = true;
             Client client_abs = new Client();
+            int toAllMessageNumber = 0;
             while(clientAlive)
             {
+                string backMessage;
+                if (toAllMessageNumber != W2VP.messageCount)
+                {
+                    backMessage = W2VP.messageToAll;
+                    send(stream, backMessage);
+                    toAllMessageNumber = W2VP.messageCount;
+                }
                 if(stream.DataAvailable)
                 {
                     byte[] buffer = new byte[255];
                     stream.Read(buffer, 0, 255);
-                    string backMessage;
+                    
                     W2VP.MessageInterpretations message = W2VP.interpretMessage(convertData(buffer),buffer,client_abs.Authenticated);
                     switch(message)
                     {

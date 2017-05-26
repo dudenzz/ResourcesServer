@@ -13,10 +13,15 @@ namespace Server
         int size = 0;
         int current = 0;
         int dim = 0;
+        public delegate void read10000del(int current, int size);
+        public event read10000del read10000;
         void readLine(string line)
         {
             if (current % 10000 == 0)
-            Console.WriteLine("Reading vectors from file: currently at vector number " + current.ToString() + "/" + size.ToString() + "(" + (100*current/(1.0*size)).ToString() + "%)");
+            {
+                Console.WriteLine("Reading vectors from file: currently at vector number " + current.ToString() + "/" + size.ToString() + "(" + (100 * current / (1.0 * size)).ToString() + "%)");
+                read10000(current, size);
+            } 
             current++;
             string[] tokens = line.Split(' ');
             float[] vec = new float[300];

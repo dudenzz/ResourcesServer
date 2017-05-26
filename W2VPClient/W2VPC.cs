@@ -21,10 +21,12 @@ namespace W2VPClient
         #region delegates
         public delegate void AuthDelegate(string login);
         public delegate void LogoutDelegate();
+        public delegate void RecieveModelDelegate(string modelName);
         #endregion
         #region events
         public event AuthDelegate Auth;
         public event LogoutDelegate Logout_event;
+        public event RecieveModelDelegate RecieveModel;
         #endregion
         public W2VPC(IPAddress ip, int port)
         {
@@ -64,6 +66,10 @@ namespace W2VPClient
                                     alive = false;
                                     stream.Close();
                                     mainClient.Close();
+                                    mainClient = new TcpClient();
+                                    break;
+                                case "MODEL":
+                                    RecieveModel(message.Split()[1]);
                                     break;
                             }
                         }
@@ -111,7 +117,16 @@ namespace W2VPClient
         {
             byte[] buffer = new byte[255];
             stream.Write(toByteArray("LOGOUT"),0,255);
-
+        }
+        public void GetModels()
+        {
+            byte[] buffer = new byte[255];
+            stream.Write(toByteArray("LISTMODELS"), 0, 255);
+        }
+        public void ReadModel(string modelName)
+        {
+            byte[] buffer = new byte[255];
+            stream.Write(toByteArray("READMODEL "+modelName), 0, 255);
         }
     }
 }
