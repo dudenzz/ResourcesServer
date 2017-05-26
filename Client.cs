@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Server
 {
+    /// <summary>
+    /// Client class contains basic informations about connected Client such as his current authentification status or his name
+    /// </summary>
     class Client
     {
         bool authenticated = false;
