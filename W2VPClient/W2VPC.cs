@@ -74,7 +74,7 @@ namespace W2VPClient
                                     RecieveModel(message.Split()[1]);
                                     break;
                                 case "READING":
-                                    UpdateReadingProgress(int.Parse(message.Split(' ')[0]), int.Parse(message.Split(' ')[1]));
+                                    UpdateReadingProgress(int.Parse(message.Split(' ')[1]), int.Parse(message.Split(' ')[2]));
                                     break;
 
                             }

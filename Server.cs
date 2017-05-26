@@ -140,7 +140,7 @@ namespace Server
                             }
                             break;
                         case W2VP.MessageInterpretations.READ:
-                            backMessage = "READING";
+                            backMessage = "READING 0 1";
                             Console.Write("Started reading a corpus, blocked reading command");
                             send(stream, backMessage);
                             break;
