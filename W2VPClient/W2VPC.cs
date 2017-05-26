@@ -22,11 +22,13 @@ namespace W2VPClient
         public delegate void AuthDelegate(string login);
         public delegate void LogoutDelegate();
         public delegate void RecieveModelDelegate(string modelName);
+        public delegate void UpdateReadingProgressDelegate(int current, int size);
         #endregion
         #region events
         public event AuthDelegate Auth;
         public event LogoutDelegate Logout_event;
         public event RecieveModelDelegate RecieveModel;
+        public event UpdateReadingProgressDelegate UpdateReadingProgress;
         #endregion
         public W2VPC(IPAddress ip, int port)
         {
@@ -71,6 +73,10 @@ namespace W2VPClient
                                 case "MODEL":
                                     RecieveModel(message.Split()[1]);
                                     break;
+                                case "READING":
+                                    UpdateReadingProgress(int.Parse(message.Split(' ')[0]), int.Parse(message.Split(' ')[1]));
+                                    break;
+
                             }
                         }
                     }

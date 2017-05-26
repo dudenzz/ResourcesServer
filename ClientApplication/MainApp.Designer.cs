@@ -41,6 +41,8 @@
             this.lb_models = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bt_readModel = new System.Windows.Forms.Button();
+            this.readingProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -99,7 +101,9 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connected_label});
+            this.connected_label,
+            this.toolStripStatusLabel1,
+            this.readingProgress});
             this.statusStrip1.Location = new System.Drawing.Point(0, 388);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(437, 25);
@@ -181,6 +185,18 @@
             this.bt_readModel.UseVisualStyleBackColor = true;
             this.bt_readModel.Click += new System.EventHandler(this.bt_readModel_Click);
             // 
+            // readingProgress
+            // 
+            this.readingProgress.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.readingProgress.Name = "readingProgress";
+            this.readingProgress.Size = new System.Drawing.Size(100, 19);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(107, 20);
+            this.toolStripStatusLabel1.Text = "Read progress:";
+            // 
             // MainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -224,6 +240,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button bt_readModel;
         private System.Windows.Forms.ListBox lb_models;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripProgressBar readingProgress;
     }
 }
 
