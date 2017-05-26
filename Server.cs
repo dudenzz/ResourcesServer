@@ -90,7 +90,7 @@ namespace Server
                         case W2VP.MessageInterpretations.AUTH:
                             client_abs.authenticate(convertData(buffer));
                             Console.WriteLine(client_abs.Login + " has successfully logged in");
-                            backMessage = "AUTH";
+                            backMessage = "AUTH " + client_abs.Login;
                             send(stream, backMessage);
                             break;
                         case W2VP.MessageInterpretations.NOAUTH:
@@ -119,16 +119,17 @@ namespace Server
                             send(stream, backMessage);
                             break;
                         case W2VP.MessageInterpretations.LOGOUT:
-                            backMessage = "ACK";
+                            backMessage = "LOGOUT";
                             Console.WriteLine(client_abs.Login + " logged out");
                             clientAlive = false;
                             send(stream, backMessage);
                             break;
                         case W2VP.MessageInterpretations.LIST:
-                            backMessage = "MODELLIST ";
                             foreach (string model in W2VP.Models.Keys)
-                                backMessage += model + " ";
-                            send(stream, backMessage);
+                            {
+                                backMessage = "MODEL " + model;
+                                send(stream, backMessage);
+                            }
                             break;
                         case W2VP.MessageInterpretations.READ:
                             backMessage = "READING";
