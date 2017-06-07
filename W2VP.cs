@@ -55,9 +55,9 @@ namespace Server
                 if (typeof(IClassifier).IsAssignableFrom(t) && !t.Equals(typeof(IClassifier)))
                 {
                     Console.WriteLine(t.Name);
-                    
-                    IClassifier c = (IClassifier)t.TypeInitializer.Invoke(new object[] {});
-                    //classifiers.Add(t.Name, c);
+
+                    IClassifier c = (IClassifier)System.Activator.CreateInstance(t);
+                    classifiers.Add(t.Name, c);
                 }
             }
 
