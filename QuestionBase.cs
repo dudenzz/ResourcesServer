@@ -56,8 +56,8 @@ namespace ResourcesServerGit
                 case QuestionTypes.ESL:
                     foreach(string line in File.ReadAllLines(filename))
                     {
-                        Regex qWordRE= new Regex(@".*\[(.*)\].*");
-                        Regex pRE = new Regex(".*|(.*)[|\"]");
+                        Regex qWordRE = new Regex(@".*\[(.*)\].*");
+                        Regex pRE = new Regex(".*\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\\".*");
                         Regex cRE = new Regex(".*:(.*)");
                         Regex qRE = new Regex("\"(.*)\\.|");
                         

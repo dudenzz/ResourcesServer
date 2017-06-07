@@ -13,14 +13,16 @@ namespace Sandbox
         {
             string test = "\"You know that I do not [approve] teen's smoking.|support|boast|scorn|anger\":support";
             Regex qWordRE = new Regex(@".*\[(.*)\].*");
-            Regex pRE = new Regex(".*|(.*)[|\"]");
+            Regex pRE = new Regex(".*\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\\".*");
             Regex cRE = new Regex(".*:(.*)");
             Regex qRE = new Regex("\"(.*)\\.|");
             var v = qWordRE.Match(test);
-            foreach(var group in qWordRE.Match(test).Groups)
-            {
 
+            foreach(Group group in pRE.Match(test).Groups)
+            {
+                Console.WriteLine(group.Value);
             }
+            Console.ReadKey();
 
         }
     }
