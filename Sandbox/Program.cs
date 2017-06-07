@@ -11,14 +11,14 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-            string test = "\"You know that I do not [approve] teen's smoking.|support|boast|scorn|anger\":support";
+            string test = "\"You know that I do not [approve] teen's smoking. |support|boast|scorn|anger\":support";
             Regex qWordRE = new Regex(@".*\[(.*)\].*");
             Regex pRE = new Regex(".*\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\\".*");
             Regex cRE = new Regex(".*:(.*)");
-            Regex qRE = new Regex("\"(.*)\\.|");
+            Regex qRE = new Regex("\"(.*\\.) ?\\|");
             var v = qWordRE.Match(test);
 
-            foreach(Group group in pRE.Match(test).Groups)
+            foreach(Group group in qRE.Match(test).Groups)
             {
                 Console.WriteLine(group.Value);
             }
