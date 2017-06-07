@@ -48,6 +48,7 @@ namespace Server
             questionModels = new Dictionary<string, string>();
             foreach (string l in File.ReadAllLines("questionSets.txt"))
                 questionModels.Add(l.Split(' ')[0], l.Split(' ')[1]);
+            classifiers = new Dictionary<string, IClassifier>();
             Assembly a = Assembly.GetAssembly(typeof(IClassifier));
             foreach(Type t in a.GetTypes())
             {
