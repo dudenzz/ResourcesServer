@@ -49,12 +49,12 @@ namespace Server
             foreach (string l in File.ReadAllLines("questionSets.txt"))
                 questionModels.Add(l.Split(' ')[0], l.Split(' ')[1]);
             classifiers = new Dictionary<string, IClassifier>();
-            Assembly a = Assembly.GetAssembly(typeof(IClassifier));
+            /*Assembly a = Assembly.GetAssembly(typeof(IClassifier));
             foreach(Type t in a.GetTypes())
             {
                 IClassifier c = (IClassifier)t.TypeInitializer.Invoke(new object[] {});
                 classifiers.Add(t.Name, c);
-            }
+            }*/
 
         }
         public enum MessageInterpretations
