@@ -25,8 +25,10 @@ namespace ClientApplication
             client.Logout_event += client_Logout_event;
             client.RecieveModel += client_RecieveModel;
             client.UpdateReadingProgress += client_UpdateReadingProgress;
+            client.RecieveQuestion += client_RecieveQuestion;
         }
 
+    
         
 
 
@@ -42,6 +44,11 @@ namespace ClientApplication
         {
             lb_models.Items.Add(name);
         }
+        delegate void updateQuestionListDel(string name);
+        void updateQuestionList(string name)
+        {
+            lv_questions.Items.Add(name);
+        }
         delegate void updateConnectedNameDel(string name);
         void updateConnectedName(string name)
         {
@@ -55,6 +62,11 @@ namespace ClientApplication
         }
         #endregion
         #region events
+        void client_RecieveQuestion(string qsName)
+        {
+            updateQuestionListDel f = new updateQuestionListDel(updateQuestionList);
+            this.Invoke(f, qsName);
+        }
         void client_RecieveModel(string modelName)
         {
             updateModelListDel f = new updateModelListDel(updateModelList);
@@ -72,6 +84,7 @@ namespace ClientApplication
             updateConnectedNameDel f = new updateConnectedNameDel(updateConnectedName);
             this.Invoke(f, login);
             client.GetModels();
+            client.GetQuestionSets();
         }
         void client_UpdateReadingProgress(int current, int size)
         {

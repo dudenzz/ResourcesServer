@@ -28,6 +28,7 @@ namespace W2VPClient
         public event AuthDelegate Auth;
         public event LogoutDelegate Logout_event;
         public event RecieveModelDelegate RecieveModel;
+        public event RecieveModelDelegate RecieveQuestion;
         public event UpdateReadingProgressDelegate UpdateReadingProgress;
         #endregion
         public W2VPC(IPAddress ip, int port)
@@ -72,6 +73,9 @@ namespace W2VPClient
                                     break;
                                 case "MODEL":
                                     RecieveModel(message.Split()[1]);
+                                    break;
+                                case "QUESTIONS":
+                                    RecieveQuestion(message.Split()[1]);
                                     break;
                                 case "READING":
                                     UpdateReadingProgress(int.Parse(message.Split(' ')[1]), int.Parse(message.Split(' ')[2]));
@@ -138,6 +142,12 @@ namespace W2VPClient
         public void SendCustomMessage(string Message)
         {
             stream.Write(toByteArray(Message), 0, 255);
+        }
+
+        public void GetQuestionSets()
+        {
+            byte[] buffer = new byte[255];
+            stream.Write(toByteArray("LISTQUESTIONS"), 0, 255);
         }
     }
 }

@@ -14,6 +14,13 @@ namespace Server
     {
         static Dictionary<string, string> logins;
         static Dictionary<string, string> models;
+        static Dictionary<string, string> questionModels;
+
+        public static Dictionary<string, string> QuestionModels
+        {
+            get { return W2VP.questionModels; }
+            set { W2VP.questionModels = value; }
+        }
 
         public static Dictionary<string, string> Models
         {
@@ -31,6 +38,10 @@ namespace Server
             models = new Dictionary<string, string>();
             foreach (string l in File.ReadAllLines("models.txt"))
                 models.Add(l.Split(' ')[0], l.Split(' ')[1]);
+            questionModels = new Dictionary<string, string>();
+            foreach (string l in File.ReadAllLines("questionSets.txt"))
+                questionModels.Add(l.Split(' ')[0], l.Split(' ')[1]);
+
         }
         public enum MessageInterpretations
         {
@@ -42,7 +53,8 @@ namespace Server
             LOGOUT,
             READ,
             NOREAD,
-            LIST
+            LIST,
+            LISTQ
         }
         static byte[] toByteArray(string message)
         {
@@ -98,8 +110,11 @@ namespace Server
                     }).Start();
                     return MessageInterpretations.READ;
                 case "LISTMODELS":
+                    return MessageInterpretations.LISTQ;
+                case "LISTQUESTIONS":
                     return MessageInterpretations.LIST;
                 case "READQUESTIONS":
+
                     QuestionBase qb = new QuestionBase("../../data/questions", QuestionBase.QuestionTypes.ESL);
                     break;
                 default:

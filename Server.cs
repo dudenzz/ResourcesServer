@@ -132,6 +132,13 @@ namespace Server
                             clientAlive = false;
                             send(stream, backMessage);
                             break;
+                        case W2VP.MessageInterpretations.LISTQ:
+                            foreach (string questionModel in W2VP.QuestionModels.Keys)
+                            {
+                                backMessage = "QUESTIONS " + questionModel;
+                                send(stream, backMessage);
+                            }
+                            break;
                         case W2VP.MessageInterpretations.LIST:
                             foreach (string model in W2VP.Models.Keys)
                             {
