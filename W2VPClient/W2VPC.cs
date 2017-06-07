@@ -134,5 +134,10 @@ namespace W2VPClient
             byte[] buffer = new byte[255];
             stream.Write(toByteArray("READMODEL "+modelName), 0, 255);
         }
+
+        public void SendCustomMessage(string Message)
+        {
+            stream.Write(toByteArray(Message), 0, 255);
+        }
     }
 }

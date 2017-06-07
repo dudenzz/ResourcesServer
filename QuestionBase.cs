@@ -62,6 +62,7 @@ namespace ResourcesServerGit
                         Regex qRE = new Regex("\"(.*)\\.|");
                         
                         if (qWordRE.Matches(line).Count != 1) throw new Exception("more than one question word");
+                        Console.Write(pRE.Matches(line).Count);
                         if (pRE.Matches(line).Count != 4) throw new Exception("number of possibilities incorrect");
                         if (cRE.Matches(line).Count != 1) throw new Exception("more than one correctAnswer");
                         if (qRE.Matches(line).Count != 1) throw new Exception("more than one question");

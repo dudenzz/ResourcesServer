@@ -113,5 +113,10 @@ namespace ClientApplication
                 MessageBox.Show("You can read only one model at once");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            client.SendCustomMessage(textBox1.Text);
+        }
     }
 }
