@@ -1,3 +1,4 @@
+using ResourcesServerGit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -98,7 +99,9 @@ namespace Server
                     return MessageInterpretations.READ;
                 case "LISTMODELS":
                     return MessageInterpretations.LIST;
-
+                case "READQUESTIONS":
+                    QuestionBase qb = new QuestionBase("../../data/questions", QuestionBase.QuestionTypes.ESL);
+                    break;
                 default:
                     return MessageInterpretations.INVALID;
             }
