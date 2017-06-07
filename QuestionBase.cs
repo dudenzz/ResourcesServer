@@ -67,7 +67,7 @@ namespace ResourcesServerGit
                         Regex qWordRE = new Regex(@".*\[(.*)\].*");
                         Regex pRE = new Regex(".*\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\\".*");
                         Regex cRE = new Regex(".*:(.*)");
-                        Regex qRE = new Regex("\"(.*\\.?) ?\\|");
+                        Regex qRE = new Regex("\"([^\\|]*\\.?) ?\\|");
                         
                         if (qWordRE.Match(line).Groups.Count != 2) throw new Exception("more than one question word");
                         if (pRE.Match(line).Groups.Count != 5) throw new Exception("number of possibilities incorrect");
