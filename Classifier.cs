@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ResourcesServerGit
 {
-    interface IClassifier
+    public interface IClassifier
     {
         double[] answerQuestion(Question q, Model m);
     }
