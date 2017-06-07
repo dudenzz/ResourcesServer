@@ -130,6 +130,7 @@ namespace ResourcesServerGit
 
         public QuestionBase(string filename, string name, QuestionTypes type)
         {
+            questions = new List<Question>();
             qBname = name;
             switch(type)
             {
@@ -159,6 +160,7 @@ namespace ResourcesServerGit
                         q.Possiblities = p;
                         q.QuestionString = question;
                         q.QuestionWord = qWord;
+                        questions.Add(q);
                         Console.WriteLine(q);
                     }
                     break;
