@@ -15,7 +15,7 @@ namespace Sandbox
             Regex qWordRE = new Regex(@".*\[(.*)\].*");
             Regex pRE = new Regex(".*\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\\".*");
             Regex cRE = new Regex(".*:(.*)");
-            Regex qRE = new Regex("\"(.*\\.) ?\\|");
+            Regex qRE = new Regex("\"(.*\\.?) ?\\|");
             var v = qWordRE.Match(test);
 
             foreach(Group group in qRE.Match(test).Groups)
