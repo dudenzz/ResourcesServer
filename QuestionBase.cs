@@ -61,12 +61,12 @@ namespace ResourcesServerGit
                         Regex cRE = new Regex(".*:(.*)");
                         Regex qRE = new Regex("\"(.*)\\.|");
                         
-                        if (qWordRE.Match(line).Groups.Count != 1) throw new Exception("more than one question word");
-                        Console.Write(qWordRE.Matches(line)[0].Groups[0].Value);
-                        Console.Write(pRE.Matches(line).Count);
-                        if (pRE.Match(line).Groups.Count != 4) throw new Exception("number of possibilities incorrect");
-                        if (cRE.Match(line).Groups.Count != 1) throw new Exception("more than one correctAnswer");
-                        if (qRE.Match(line).Groups.Count != 1) throw new Exception("more than one question");
+                        if (qWordRE.Match(line).Groups.Count != 2) throw new Exception("more than one question word");
+                        Console.Write(qWordRE.Match(line).Groups[1].Value);
+                        Console.Write(pRE.Match(line).Groups.Count);
+                        if (pRE.Match(line).Groups.Count != 5) throw new Exception("number of possibilities incorrect");
+                        if (cRE.Match(line).Groups.Count != 2) throw new Exception("more than one correctAnswer");
+                        if (qRE.Match(line).Groups.Count != 2) throw new Exception("more than one question");
 
                     }
                     break;

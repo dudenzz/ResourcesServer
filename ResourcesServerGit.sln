@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication", "Client
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestyJednostkowe", "UnitTestProject1\TestyJednostkowe.csproj", "{48FAA13B-26BA-429E-A321-169C31B7A626}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,16 @@ Global
 		{48FAA13B-26BA-429E-A321-169C31B7A626}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{48FAA13B-26BA-429E-A321-169C31B7A626}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{48FAA13B-26BA-429E-A321-169C31B7A626}.Release|x86.ActiveCfg = Release|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6BF646CE-F1C1-4373-A828-DB8CC4128ED1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
