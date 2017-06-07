@@ -174,7 +174,10 @@ namespace Server
                             foreach (IClassifier c in classifiers.Values)
                             {
                                 if (c.GetType().Name == message.Split(' ')[2])
+                                { 
                                     qb.assignClassifier(c);
+                                    qb.ClassifierAssigned = true;
+                                }
 
                             }
                             if (qb.ModelAssigned && qb.ClassifierAssigned)
