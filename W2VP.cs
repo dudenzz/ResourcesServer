@@ -183,7 +183,18 @@ namespace Server
                             if (qb.ModelAssigned && qb.ClassifierAssigned)
                             {
                                 qb.answerQuestions();
-                                Console.Write(qb.AnsweredQuestions[0].Correct);
+                                //DEBUGGING
+                                int correct = 0;
+                                int incorrect = 0;
+                                foreach(AnsweredQuestion q in qb.AnsweredQuestions)
+                                {
+                                    if(q.Correct)
+                                        correct += 1;
+                                    else
+                                        incorrect += 1;
+                                    Console.WriteLine(q.Q.QuestionString + q.Similarities[0].ToString() + " " + q.Similarities[1].ToString() + " " + q.Similarities[2].ToString() + " " + q.Similarities[3].ToString() +" Correct:" + q.Correct.ToString());
+                                }
+                                Console.WriteLine(correct.ToString() + "/"+  (correct + incorrect).ToString());
                             }
                         }
                         
