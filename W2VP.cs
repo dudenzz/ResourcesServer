@@ -44,6 +44,7 @@ namespace Server
         static Model model;
         static W2VP()
         {
+            questionBases = new List<QuestionBase>();
             model = new Model();
             logins = new Dictionary<string, string>();
             foreach (string l in File.ReadAllLines("logins.txt"))
