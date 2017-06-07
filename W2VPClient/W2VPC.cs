@@ -29,6 +29,7 @@ namespace W2VPClient
         public event LogoutDelegate Logout_event;
         public event RecieveModelDelegate RecieveModel;
         public event RecieveModelDelegate RecieveQuestion;
+        public event RecieveModelDelegate RecieveClassifier;
         public event UpdateReadingProgressDelegate UpdateReadingProgress;
         #endregion
         public W2VPC(IPAddress ip, int port)
@@ -76,6 +77,9 @@ namespace W2VPClient
                                     break;
                                 case "QUESTIONS":
                                     RecieveQuestion(message.Split()[1]);
+                                    break;
+                                case "CLASSIFIER":
+                                    RecieveClassifier(message.Split()[1]);
                                     break;
                                 case "READING":
                                     UpdateReadingProgress(int.Parse(message.Split(' ')[1]), int.Parse(message.Split(' ')[2]));
@@ -148,6 +152,11 @@ namespace W2VPClient
         {
             byte[] buffer = new byte[255];
             stream.Write(toByteArray("LISTQUESTIONS"), 0, 255);
+        }
+        public void GetClassifiers()
+        {
+            byte[] buffer = new byte[255];
+            stream.Write(toByteArray("LISTCLASSIFIERS"), 0, 255);
         }
     }
 }

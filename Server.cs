@@ -146,6 +146,13 @@ namespace Server
                                 send(stream, backMessage);
                             }
                             break;
+                        case W2VP.MessageInterpretations.LISTC:
+                            foreach (string model in W2VP.Classifiers.Keys)
+                            {
+                                backMessage = "CLASSIFIER " + model;
+                                send(stream, backMessage);
+                            }
+                            break;
                         case W2VP.MessageInterpretations.READ:
                             backMessage = "READING 0 1";
                             Console.Write("Started reading a corpus, blocked reading command");

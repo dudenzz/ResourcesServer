@@ -35,21 +35,24 @@
             this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.connected_label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.readingProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lb_models = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bt_readModel = new System.Windows.Forms.Button();
-            this.readingProgress = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lb_models = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lv_questions = new System.Windows.Forms.ListView();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.cb_Classifiers = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -62,9 +65,10 @@
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -128,10 +132,22 @@
             this.connected_label.Size = new System.Drawing.Size(99, 20);
             this.connected_label.Text = "Disconnected";
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(107, 20);
+            this.toolStripStatusLabel1.Text = "Read progress:";
+            // 
+            // readingProgress
+            // 
+            this.readingProgress.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.readingProgress.Name = "readingProgress";
+            this.readingProgress.Size = new System.Drawing.Size(100, 19);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 56);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -141,9 +157,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(437, 360);
+            this.splitContainer1.Size = new System.Drawing.Size(437, 332);
             this.splitContainer1.SplitterDistance = 145;
-            this.splitContainer1.TabIndex = 2;
+            this.splitContainer1.TabIndex = 10;
             // 
             // splitContainer2
             // 
@@ -159,37 +175,27 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(145, 360);
-            this.splitContainer2.SplitterDistance = 154;
+            this.splitContainer2.Size = new System.Drawing.Size(145, 332);
+            this.splitContainer2.SplitterDistance = 142;
             this.splitContainer2.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.lb_models);
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(145, 154);
+            this.groupBox1.Size = new System.Drawing.Size(145, 142);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Models";
-            // 
-            // lb_models
-            // 
-            this.lb_models.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_models.FormattingEnabled = true;
-            this.lb_models.ItemHeight = 16;
-            this.lb_models.Location = new System.Drawing.Point(3, 18);
-            this.lb_models.Name = "lb_models";
-            this.lb_models.Size = new System.Drawing.Size(139, 133);
-            this.lb_models.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.bt_readModel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 77);
+            this.panel1.Location = new System.Drawing.Point(3, 65);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(139, 74);
             this.panel1.TabIndex = 1;
@@ -205,28 +211,46 @@
             this.bt_readModel.UseVisualStyleBackColor = true;
             this.bt_readModel.Click += new System.EventHandler(this.bt_readModel_Click);
             // 
-            // readingProgress
+            // lb_models
             // 
-            this.readingProgress.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.readingProgress.Name = "readingProgress";
-            this.readingProgress.Size = new System.Drawing.Size(100, 19);
+            this.lb_models.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_models.FormattingEnabled = true;
+            this.lb_models.ItemHeight = 16;
+            this.lb_models.Location = new System.Drawing.Point(3, 18);
+            this.lb_models.Name = "lb_models";
+            this.lb_models.Size = new System.Drawing.Size(139, 47);
+            this.lb_models.TabIndex = 0;
             // 
-            // toolStripStatusLabel1
+            // groupBox2
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(107, 20);
-            this.toolStripStatusLabel1.Text = "Read progress:";
+            this.groupBox2.Controls.Add(this.lv_questions);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(145, 186);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "QuestionSets";
+            // 
+            // lv_questions
+            // 
+            this.lv_questions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_questions.Location = new System.Drawing.Point(3, 18);
+            this.lv_questions.Name = "lv_questions";
+            this.lv_questions.Size = new System.Drawing.Size(139, 165);
+            this.lv_questions.TabIndex = 0;
+            this.lv_questions.UseCompatibleStateImageBehavior = false;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(288, 360);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(288, 332);
+            this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
@@ -235,20 +259,17 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(280, 331);
+            this.tabPage1.Size = new System.Drawing.Size(280, 303);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // textBox1
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 71);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(6, 35);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 1;
             // 
             // button1
             // 
@@ -260,32 +281,38 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // tabPage2
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 1;
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(280, 331);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // toolStrip1
             // 
-            this.groupBox2.Controls.Add(this.lv_questions);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(145, 202);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "QuestionSets";
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.cb_Classifiers});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(437, 28);
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // lv_questions
+            // cb_Classifiers
             // 
-            this.lv_questions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lv_questions.Location = new System.Drawing.Point(3, 18);
-            this.lv_questions.Name = "lv_questions";
-            this.lv_questions.Size = new System.Drawing.Size(139, 181);
-            this.lv_questions.TabIndex = 0;
-            this.lv_questions.UseCompatibleStateImageBehavior = false;
+            this.cb_Classifiers.Name = "cb_Classifiers";
+            this.cb_Classifiers.Size = new System.Drawing.Size(121, 28);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(75, 25);
+            this.toolStripLabel1.Text = "Classifier: ";
             // 
             // MainApp
             // 
@@ -294,6 +321,7 @@
             this.ClientSize = new System.Drawing.Size(437, 413);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainApp";
@@ -312,10 +340,12 @@
             this.splitContainer2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,6 +375,9 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lv_questions;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripComboBox cb_Classifiers;
     }
 }
 

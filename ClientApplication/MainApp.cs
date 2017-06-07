@@ -26,7 +26,10 @@ namespace ClientApplication
             client.RecieveModel += client_RecieveModel;
             client.UpdateReadingProgress += client_UpdateReadingProgress;
             client.RecieveQuestion += client_RecieveQuestion;
+            client.RecieveClassifier += client_RecieveClassifier;
         }
+
+        
 
     
         
@@ -48,6 +51,11 @@ namespace ClientApplication
         void updateQuestionList(string name)
         {
             lv_questions.Items.Add(name);
+        }
+        delegate void updateClassifierListDel(string name);
+        void updateClassifierList(string name)
+        {
+            cb_Classifiers.Items.Add(name);
         }
         delegate void updateConnectedNameDel(string name);
         void updateConnectedName(string name)
@@ -72,6 +80,10 @@ namespace ClientApplication
             updateModelListDel f = new updateModelListDel(updateModelList);
             this.Invoke(f,modelName);
         }
+        void client_RecieveClassifier(string modelName)
+        {
+            throw new NotImplementedException();
+        }
         void client_Logout_event()
         {
             changeConnectsDel f = new changeConnectsDel(changeConnects);
@@ -85,6 +97,7 @@ namespace ClientApplication
             this.Invoke(f, login);
             client.GetModels();
             client.GetQuestionSets();
+            client.GetClassifiers();
         }
         void client_UpdateReadingProgress(int current, int size)
         {

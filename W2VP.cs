@@ -17,6 +17,12 @@ namespace Server
         static Dictionary<string, string> models;
         static Dictionary<string, string> questionModels;
         static Dictionary<string, IClassifier> classifiers;
+
+        internal static Dictionary<string, IClassifier> Classifiers
+        {
+            get { return W2VP.classifiers; }
+            set { W2VP.classifiers = value; }
+        }
         public static Dictionary<string, string> QuestionModels
         {
             get { return W2VP.questionModels; }
@@ -61,7 +67,8 @@ namespace Server
             READ,
             NOREAD,
             LIST,
-            LISTQ
+            LISTQ,
+            LISTC
         }
         static byte[] toByteArray(string message)
         {
@@ -120,6 +127,9 @@ namespace Server
                     return MessageInterpretations.LISTQ;
                 case "LISTQUESTIONS":
                     return MessageInterpretations.LIST;
+
+                case "LISTCLASSIFIERS":
+                    return MessageInterpretations.LISTC;
                 case "READQUESTIONS":
                     QuestionBase qb = new QuestionBase("../../data/questions", QuestionBase.QuestionTypes.ESL);
                     break;
