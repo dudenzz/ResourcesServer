@@ -57,7 +57,7 @@ namespace Server
                     Console.WriteLine(t.Name);
                     
                     IClassifier c = (IClassifier)t.TypeInitializer.Invoke(new object[] {});
-                    classifiers.Add(t.Name, c);
+                    //classifiers.Add(t.Name, c);
                 }
             }
 
