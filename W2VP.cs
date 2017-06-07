@@ -52,7 +52,8 @@ namespace Server
             Assembly a = Assembly.GetAssembly(typeof(IClassifier));
             foreach(Type t in a.GetTypes())
             {
-                Console.WriteLine(t.Name);
+                if(typeof(IClassifier).IsAssignableFrom(t))
+                    Console.WriteLine(t.Name);
                 /*
                 IClassifier c = (IClassifier)t.TypeInitializer.Invoke(new object[] {});
                 classifiers.Add(t.Name, c);*/
