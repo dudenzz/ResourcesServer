@@ -8,6 +8,6 @@ namespace ResourcesServerGit
 {
     interface IClassifier
     {
-        bool answerQuestion(Question q, Model m);
+        double[] answerQuestion(Question q, Model m);
     }
 }
