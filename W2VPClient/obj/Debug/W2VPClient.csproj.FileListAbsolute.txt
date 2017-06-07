@@ -1,0 +1,5 @@
+C:\Users\Asus\Source\Repos\ResourcesServer\W2VPClient\bin\Debug\W2VPClient.dll
+C:\Users\Asus\Source\Repos\ResourcesServer\W2VPClient\bin\Debug\W2VPClient.pdb
+C:\Users\Asus\Source\Repos\ResourcesServer\W2VPClient\obj\Debug\W2VPClient.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Source\Repos\ResourcesServer\W2VPClient\obj\Debug\W2VPClient.dll
+C:\Users\Asus\Source\Repos\ResourcesServer\W2VPClient\obj\Debug\W2VPClient.pdb

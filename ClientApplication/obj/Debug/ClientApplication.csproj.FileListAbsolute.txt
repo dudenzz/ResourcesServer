@@ -1,0 +1,12 @@
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\bin\Debug\ClientApplication.exe.config
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\bin\Debug\ClientApplication.exe
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\bin\Debug\ClientApplication.pdb
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\bin\Debug\W2VPClient.dll
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\bin\Debug\W2VPClient.pdb
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\obj\Debug\ClientApplication.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\obj\Debug\ClientApplication.MainApp.resources
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\obj\Debug\ClientApplication.Properties.Resources.resources
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\obj\Debug\ClientApplication.ServerConfiguration.resources
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\obj\Debug\ClientApplication.csproj.GenerateResource.Cache
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\obj\Debug\ClientApplication.exe
+C:\Users\Asus\Source\Repos\ResourcesServer\ClientApplication\obj\Debug\ClientApplication.pdb

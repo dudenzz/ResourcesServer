@@ -1,0 +1,7 @@
+C:\Users\Asus\Source\Repos\ResourcesServer\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\Asus\Source\Repos\ResourcesServer\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\Asus\Source\Repos\ResourcesServer\UnitTestProject1\bin\Debug\ConsoleApplication.exe
+C:\Users\Asus\Source\Repos\ResourcesServer\UnitTestProject1\bin\Debug\ConsoleApplication.pdb
+C:\Users\Asus\Source\Repos\ResourcesServer\UnitTestProject1\obj\Debug\TestyJednostkowe.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Source\Repos\ResourcesServer\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\Asus\Source\Repos\ResourcesServer\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
