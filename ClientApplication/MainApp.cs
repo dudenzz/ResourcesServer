@@ -82,7 +82,8 @@ namespace ClientApplication
         }
         void client_RecieveClassifier(string modelName)
         {
-            throw new NotImplementedException();
+            updateClassifierListDel f = new updateClassifierListDel(updateClassifierList);
+            this.Invoke(f, modelName);
         }
         void client_Logout_event()
         {

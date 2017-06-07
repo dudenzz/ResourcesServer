@@ -59,7 +59,9 @@ namespace Server
         }
         public double cosine(string w1, string w2)
         {
-            return cosine(this[w1], this[w2]);
+            if(vectors.Keys.Contains(w1) && vectors.Keys.Contains(w2))
+                return cosine(this[w1], this[w2]);
+            return 0.0;
         }
         double cosine(float[] v1, float[] v2)
         {

@@ -17,7 +17,13 @@ namespace Server
         static Dictionary<string, string> models;
         static Dictionary<string, string> questionModels;
         static Dictionary<string, IClassifier> classifiers;
+        static List<QuestionBase> questionBases;
 
+        public static List<QuestionBase> QuestionBases
+        {
+            get { return W2VP.questionBases; }
+            set { W2VP.questionBases = value; }
+        }
         internal static Dictionary<string, IClassifier> Classifiers
         {
             get { return W2VP.classifiers; }
@@ -47,15 +53,18 @@ namespace Server
                 models.Add(l.Split(' ')[0], l.Split(' ')[1]);
             questionModels = new Dictionary<string, string>();
             foreach (string l in File.ReadAllLines("questionSets.txt"))
+            {
                 questionModels.Add(l.Split(' ')[0], l.Split(' ')[1]);
+                QuestionBase.QuestionTypes type = (QuestionBase.QuestionTypes)Enum.Parse(typeof(QuestionBase.QuestionTypes), l.Split(' ')[2]);
+                QuestionBase qb = new QuestionBase(l.Split(' ')[1],l.Split(' ')[0], type);
+                questionBases.Add(qb);
+            }
             classifiers = new Dictionary<string, IClassifier>();
             Assembly a = Assembly.GetAssembly(typeof(IClassifier));
             foreach(Type t in a.GetTypes())
             {
                 if (typeof(IClassifier).IsAssignableFrom(t) && !t.Equals(typeof(IClassifier)))
                 {
-                    Console.WriteLine(t.Name);
-
                     IClassifier c = (IClassifier)System.Activator.CreateInstance(t);
                     classifiers.Add(t.Name, c);
                 }
@@ -74,7 +83,9 @@ namespace Server
             NOREAD,
             LIST,
             LISTQ,
-            LISTC
+            LISTC,
+            ASSIGNEDMODEL,
+            ASSIGNEDCLASSIFIER
         }
         static byte[] toByteArray(string message)
         {
@@ -137,7 +148,42 @@ namespace Server
                 case "LISTCLASSIFIERS":
                     return MessageInterpretations.LISTC;
                 case "READQUESTIONS":
-                    QuestionBase qb = new QuestionBase("../../data/questions", QuestionBase.QuestionTypes.ESL);
+                    
+                    break;
+                case "ASSIGNMODEL":
+                    foreach(QuestionBase qb in questionBases)
+                    {
+                        if(qb.QBname == message.Split(' ')[1])
+                        {
+                            qb.assignModel(model);
+                            qb.ModelAssigned = true;
+                            if (qb.ModelAssigned && qb.ClassifierAssigned)
+                            {
+                                qb.answerQuestions();
+                                Console.Write(qb.AnsweredQuestions[0].Correct);
+                            }
+                        }
+                    }
+                    break;
+                case "ASSIGNCLASSIFIER":
+                    foreach (QuestionBase qb in questionBases)
+                    {
+                        if (qb.QBname == message.Split(' ')[1])
+                        {
+                            foreach (IClassifier c in classifiers.Values)
+                            {
+                                if (c.GetType().Name == message.Split(' ')[1])
+                                    qb.assignClassifier(c);
+
+                            }
+                            if (qb.ModelAssigned && qb.ClassifierAssigned)
+                            {
+                                qb.answerQuestions();
+                                Console.Write(qb.AnsweredQuestions[0].Correct);
+                            }
+                        }
+                        
+                    }
                     break;
                 default:
                     return MessageInterpretations.INVALID;

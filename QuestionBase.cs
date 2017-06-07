@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -47,18 +48,89 @@ namespace ResourcesServerGit
         }
         public Question() {}
     }
+    public class AnsweredQuestion
+    {
+        Question q;
+
+        public Question Q
+        {
+            get { return q; }
+            set { q = value; }
+        }
+        bool correct;
+
+        public bool Correct
+        {
+            get { return correct; }
+            set { correct = value; }
+        }
+        double[] similarities;
+
+        public double[] Similarities
+        {
+            get { return similarities; }
+            set { similarities = value; }
+        }
+        public AnsweredQuestion(Question q, double[] similarities)
+        {
+            this.q = q;
+            this.similarities = similarities;
+            double max = -100;
+            int chosen = -1;
+            for(int i = 0; i<q.Possiblities.Length; i++)
+            {
+                if(similarities[i] > max)
+                {
+                    chosen = i;
+                    max = similarities[i];
+                }
+            }
+            if (q.Possiblities[chosen].Equals(q.CorrectAnswer))
+                correct = true;
+        }
+    }
     public class QuestionBase
     {
+        bool modelAssigned = false;
+        bool classifierAssigned = false;
+        List<AnsweredQuestion> answeredQuestions = new List<AnsweredQuestion>();
+
+        public List<AnsweredQuestion> AnsweredQuestions
+        {
+            get { return answeredQuestions; }
+            set { answeredQuestions = value; }
+        }
+        IClassifier classifier;
+        Model model;
+        string qBname;
+
+        public string QBname
+        {
+            get { return qBname; }
+            set { qBname = value; }
+        }
+        public bool ClassifierAssigned
+        {
+            get { return classifierAssigned; }
+            set { classifierAssigned = value; }
+        }
+        public bool ModelAssigned
+        {
+            get { return modelAssigned; }
+            set { modelAssigned = value; }
+        }
         List<Question> questions;
         public enum QuestionTypes
         {
             TOEFL,
-            ESL
+            ESL,
+            INVALID
         }
         //comment
 
-        public QuestionBase(string filename, QuestionTypes type)
+        public QuestionBase(string filename, string name, QuestionTypes type)
         {
+            qBname = name;
             switch(type)
             {
                 case QuestionTypes.ESL:
@@ -90,7 +162,32 @@ namespace ResourcesServerGit
                         Console.WriteLine(q);
                     }
                     break;
+                case QuestionTypes.TOEFL:
+                    //todo
+                    break;
+                case QuestionTypes.INVALID:
+                    //todo
+                    break;
+                default:
+                    //todo
+                    break;
             }
         }
+        public void assignClassifier(IClassifier c)
+        {
+            classifier = c;
+        }
+        public void assignModel(Model m)
+        {
+            model = m;
+        }
+        public void answerQuestions()
+        {
+            foreach (Question q in questions)
+            {
+                answeredQuestions.Add(new AnsweredQuestion(q,classifier.answerQuestion(q, model)));
+            }
+        }
+
     }
 }
